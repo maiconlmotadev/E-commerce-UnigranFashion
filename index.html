@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="css/owl.theme.default.min.css">
     <!-- StyleSheet-->
     <link rel="stylesheet" href="css/main.css">
+    <!-- jquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
  <!--Start  Loading -->
@@ -188,31 +190,74 @@
 <main class="home-category">
  <div class="container">
   <div class="row">
-    <div class="col-md-4 category-item">
+    <div class="col-md-4 category-item" id="photoMan">
        <div class="cate-image">
           <img src="images/demo/demo2-MEN.jpg" class="w-100 img-thumbnail" alt="">
        </div>
        <div class="cate-btn">
-        <a href="#" class="btn">MEN</a>
-       </div>
+        <a href="#" id="btnMan" class="btn">MEN</a>
+        </div>
+        <script>
+            $(document).ready(function() {
+              // Aguarda o documento ser carregado antes de executar o código jQuery
+      
+              // Manipulação de elemento HTML ao clicar em um botão
+              $("#btnMan").click(function() {
+              $("#photoMan").hide(); // Oculta o elemento com ID "meuElemento"
+              });
+            });
+        </script>
     </div>
     <div class="col-md-4 category-item">
         <div class="cate-image">
            <img src="images/demo/demo2-WOMEN.jpg" class="w-100 img-thumbnail" alt="">
         </div>
         <div class="cate-btn">
-         <a href="#" class="btn">WOMEN</a>
+         <a href="#" id="btnWomen" class="btn">WOMEN</a>
         </div>
+        <script>
+          $(document).ready(function() {
+            // Aguarda o documento ser carregado antes de executar o código jQuery
+            
+            // Animação de um elemento ao passar o mouse sobre ele
+            $("#btnWomen").mouseenter(function() {
+              $(this).animate({ width: "200px" }, 500); // Altera a largura para 200px em 500ms
+            });
+            
+            // Reverte a animação quando o mouse sai do elemento
+            $("#btnWomen").mouseleave(function() {
+              $(this).animate({ width: "100px" }, 500); // Altera a largura para 100px em 500ms
+            });
+          });
+        </script>
      </div>
      <div class="col-md-4 category-item">
         <div class="cate-image">
            <img src="images/demo/demo2-ACCESSORIES.jpg" class="w-100 img-thumbnail" alt="">
         </div>
         <div class="cate-btn">
-         <a href="#" class="btn">ACCESSORIES</a>
+         <a href="#" id="btnAccessories" class="btn">ACCESSORIES</a>
         </div>
+        <script>
+          $(document).ready(function() {
+          // Aguarda o documento ser carregado antes de executar o código jQuery
+          
+          // Requisição AJAX ao clicar em um botão
+          $("#btnAccessories").click(function() {
+            $.ajax({
+              url: "meuservidor.com/dados",
+              method: "GET",
+              success: function(response) {
+                $("index").html(response); // Atualiza o elemento com ID "resultado" com os dados do servidor
+              },
+              error: function() {
+                alert("Ocorreu um erro na solicitação."); // Exibe uma mensagem de erro em caso de falha na requisição
+              }
+            });
+            });
+          });
+        </script>
      </div>
-   
   </div>
  </div>   
 </main>
